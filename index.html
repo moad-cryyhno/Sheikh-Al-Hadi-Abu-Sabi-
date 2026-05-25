@@ -1,0 +1,1905 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشيخ العلامة الهادي أبوصبيع الخويلدي</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <style>
+        /* ============ CSS Variables & Theme System ============ */
+        :root {
+            --font-scale: 16px;
+            --sidebar-width: 260px;
+            --header-height: 64px;
+            --transition-speed: 0.3s;
+
+            /* Light Theme (default) */
+            --bg-primary: #f0f2f5;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f8f9fa;
+            --bg-glass: rgba(255, 255, 255, 0.7);
+            --text-primary: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --text-muted: #8a8aa0;
+            --accent-color: #c9a84c;
+            --accent-light: rgba(201, 168, 76, 0.15);
+            --accent-glow: rgba(201, 168, 76, 0.3);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
+            --glass-blur: blur(12px);
+            --sidebar-bg: #ffffff;
+            --sidebar-text: #4a4a6a;
+            --sidebar-active: #c9a84c;
+            --header-bg: rgba(255, 255, 255, 0.8);
+            --card-radius: 16px;
+            --input-bg: #f0f2f5;
+            --divider-color: rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --bg-glass: rgba(26, 26, 46, 0.75);
+            --text-primary: #e8e8f0;
+            --text-secondary: #b0b0c8;
+            --text-muted: #6a6a88;
+            --accent-color: #d4af37;
+            --accent-light: rgba(212, 175, 55, 0.12);
+            --accent-glow: rgba(212, 175, 55, 0.2);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+            --glass-blur: blur(16px);
+            --sidebar-bg: #1a1a2e;
+            --sidebar-text: #b0b0c8;
+            --sidebar-active: #d4af37;
+            --header-bg: rgba(15, 15, 26, 0.85);
+            --input-bg: #16213e;
+            --divider-color: rgba(255, 255, 255, 0.06);
+        }
+
+        /* ============ Reset & Base ============ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: var(--font-scale);
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            transition: background var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* ============ Layout Structure ============ */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ============ Sidebar ============ */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-left: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--transition-speed), background var(--transition-speed);
+            box-shadow: var(--shadow-md);
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--divider-color);
+            flex-shrink: 0;
+        }
+
+        .sidebar-header .scholar-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .sidebar-header h2 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 12px 0;
+            overflow-y: auto;
+        }
+
+        .sidebar-nav .nav-section {
+            padding: 8px 20px 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            margin: 2px 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            background: var(--accent-light);
+            color: var(--accent-color);
+        }
+
+        .nav-item.active {
+            background: var(--accent-light);
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-item .material-icons-round {
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--divider-color);
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .sidebar-footer .dev-name {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* ============ Main Content ============ */
+        .main-content {
+            flex: 1;
+            margin-right: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: margin var(--transition-speed);
+        }
+
+        /* ============ Header ============ */
+        .top-header {
+            height: var(--header-height);
+            background: var(--header-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            gap: 16px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 4px;
+        }
+
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px var(--accent-light);
+        }
+
+        .search-container .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            pointer-events: none;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .header-btn:hover {
+            background: var(--accent-light);
+            color: var(--accent-color);
+        }
+
+        .theme-toggle .icon-sun,
+        .theme-toggle .icon-moon {
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+        .theme-toggle .icon-moon { display: none; }
+        [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+        /* ============ Page Content ============ */
+        .page-content {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+        }
+
+        .page-section {
+            display: none;
+            animation: fadeSlideIn 0.4s ease;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============ Cards & Glass Morphism ============ */
+        .section-card {
+            background: var(--bg-glass);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-speed);
+            position: relative;
+        }
+
+        .section-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-color);
+        }
+
+        .section-card.dragging {
+            opacity: 0.5;
+            transform: scale(0.98);
+        }
+
+        .section-card.drag-over {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .card-title .material-icons-round {
+            font-size: 1.6rem;
+        }
+
+        /* Context Menu Button */
+        .context-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .context-menu-btn:hover {
+            background: var(--accent-light);
+            color: var(--accent-color);
+        }
+
+        /* Context Menu Dropdown */
+        .context-menu {
+            position: absolute;
+            top: 50px;
+            left: 10px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            z-index: 500;
+            min-width: 200px;
+            padding: 8px 0;
+            display: none;
+            animation: scaleIn 0.2s ease;
+        }
+
+        .context-menu.show {
+            display: block;
+        }
+
+        .context-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: right;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .context-menu-item:hover {
+            background: var(--accent-light);
+            color: var(--accent-color);
+        }
+
+        .context-menu-item .material-icons-round {
+            font-size: 1.1rem;
+        }
+
+        .context-menu-divider {
+            height: 1px;
+            background: var(--divider-color);
+            margin: 4px 0;
+        }
+
+        .context-menu-item.danger {
+            color: #e74c3c;
+        }
+
+        .context-menu-item.danger:hover {
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* ============ Card Content Styles ============ */
+        .section-card p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.9;
+        }
+
+        .certificate-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            background: var(--bg-tertiary);
+            padding: 20px;
+            border-radius: 12px;
+            border-right: 4px solid var(--accent-color);
+        }
+
+        .work-item {
+            background: var(--bg-tertiary);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-right: 3px solid var(--accent-color);
+            transition: all 0.2s;
+        }
+
+        .work-item:hover {
+            transform: translateX(-4px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .work-item h3 {
+            margin: 0 0 6px 0;
+            font-size: 1.05rem;
+            color: var(--accent-color);
+        }
+
+        .work-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: #000;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-light);
+        }
+
+        .btn-primary.playing {
+            background: var(--text-secondary);
+        }
+
+        /* ============ Image Viewer ============ */
+        .image-viewer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            cursor: pointer;
+        }
+
+        .image-viewer.show {
+            display: flex;
+        }
+
+        .image-viewer img {
+            max-width: 95%;
+            max-height: 95%;
+            border: 3px solid var(--accent-color);
+            border-radius: 12px;
+            box-shadow: 0 0 60px var(--accent-glow);
+        }
+
+        /* ============ Video Container ============ */
+        .responsive-video {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+        }
+
+        .responsive-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ============ Reviews ============ */
+        .review-card {
+            background: var(--bg-tertiary);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .reviewer-name {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .review-stars {
+            direction: ltr;
+            unicode-bidi: bidi-override;
+            color: #ffb400;
+        }
+
+        .review-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .review-comment {
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .rating-form {
+            background: var(--bg-tertiary);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+
+        .rating-form input,
+        .rating-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .rating-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .star-rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .star-rating input { display: none; }
+
+        .star-rating label {
+            font-size: 28px;
+            color: #555;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label,
+        .star-rating input:checked ~ label {
+            color: #ffc107;
+        }
+
+        .btn-submit-review {
+            background: var(--accent-color);
+            border: none;
+            padding: 10px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: #000;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-family: 'Tajawal', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .btn-submit-review:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* ============ Settings ============ */
+        .settings-group {
+            margin-bottom: 20px;
+        }
+
+        .settings-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .theme-options {
+            display: flex;
+            gap: 8px;
+        }
+
+        .theme-option {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.85rem;
+        }
+
+        .theme-option.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px var(--accent-light);
+        }
+
+        .font-slider {
+            width: 100%;
+            margin-top: 8px;
+            accent-color: var(--accent-color);
+        }
+
+        /* ============ Toast Notifications ============ */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-150%);
+            background: var(--accent-color);
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 700;
+            z-index: 9999;
+            box-shadow: var(--shadow-lg);
+            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            pointer-events: none;
+            text-align: center;
+            max-width: 90%;
+        }
+
+        .toast-container.show {
+            transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* ============ Edit Modal ============ */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 24px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .modal h3 {
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+        }
+
+        .modal textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            resize: vertical;
+            margin-bottom: 16px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        /* ============ Empty State ============ */
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .empty-state .material-icons-round {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            opacity: 0.3;
+        }
+
+        /* ============ Responsive Design ============ */
+        @media (max-width: 1024px) {
+            :root {
+                --sidebar-width: 240px;
+            }
+
+            .sidebar {
+                transform: translateX(100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 999;
+            }
+
+            .sidebar-overlay.show {
+                display: block;
+            }
+        }
+
+        @media (max-width: 640px) {
+            :root {
+                --font-scale: 15px;
+                --header-height: 56px;
+            }
+
+            .page-content {
+                padding: 12px;
+            }
+
+            .section-card {
+                padding: 16px;
+                border-radius: 12px;
+            }
+
+            .top-header {
+                padding: 0 12px;
+            }
+
+            .search-container {
+                max-width: 200px;
+            }
+
+            .card-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ App Container ============ -->
+    <div class="app-container" id="appContainer">
+
+        <!-- Sidebar Overlay (mobile) -->
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+        <!-- ============ Sidebar ============ -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="scholar-icon">☪</div>
+                <h2>الشيخ الهادي أبوصبيع</h2>
+                <p>أثر أجدادنا.. علم وقضاء وإفتاء</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">المحتويات</div>
+
+                <div class="nav-item active" data-section="home" onclick="navigateTo('home')">
+                    <span class="material-icons-round">home</span>
+                    الرئيسية
+                </div>
+                <div class="nav-item" data-section="biography" onclick="navigateTo('biography')">
+                    <span class="material-icons-round">menu_book</span>
+                    السيرة العطرة
+                </div>
+                <div class="nav-item" data-section="certificate" onclick="navigateTo('certificate')">
+                    <span class="material-icons-round">history_edu</span>
+                    الشهادة التاريخية
+                </div>
+                <div class="nav-item" data-section="positions" onclick="navigateTo('positions')">
+                    <span class="material-icons-round">record_voice_over</span>
+                    المواقف والعقيدة
+                </div>
+                <div class="nav-item" data-section="prayers" onclick="navigateTo('prayers')">
+                    <span class="material-icons-round">volunteer_activism</span>
+                    أدعية مأثورة
+                </div>
+                <div class="nav-item" data-section="works" onclick="navigateTo('works')">
+                    <span class="material-icons-round">library_books</span>
+                    الأعمال والآثار
+                </div>
+
+                <div class="nav-section">وسائط</div>
+
+                <div class="nav-item" data-section="quran" onclick="navigateTo('quran')">
+                    <span class="material-icons-round">play_circle_filled</span>
+                    القرآن الكريم
+                </div>
+                <div class="nav-item" data-section="gallery" onclick="navigateTo('gallery')">
+                    <span class="material-icons-round">image</span>
+                    المعرض
+                </div>
+
+                <div class="nav-section">تفاعل</div>
+
+                <div class="nav-item" data-section="reviews" onclick="navigateTo('reviews')">
+                    <span class="material-icons-round">star_rate</span>
+                    التقييمات
+                </div>
+                <div class="nav-item" data-section="settings" onclick="navigateTo('settings')">
+                    <span class="material-icons-round">settings</span>
+                    الإعدادات
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <span>تطوير وبرمجة</span>
+                <span class="dev-name">معاذ ابوصبيع</span>
+                <br>
+                <span>صدقة جارية لروح الشيخ رحمه الله</span>
+            </div>
+        </aside>
+
+        <!-- ============ Main Content ============ -->
+        <main class="main-content" id="mainContent">
+
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="menu-toggle" onclick="toggleSidebar()" aria-label="القائمة">
+                        <span class="material-icons-round">menu</span>
+                    </button>
+                    <div class="search-container">
+                        <span class="material-icons-round search-icon">search</span>
+                        <input type="text" id="searchInput" placeholder="ابحث في المحتوى..." oninput="handleSearch(this.value)">
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="header-btn" onclick="shareSite()" title="مشاركة" aria-label="مشاركة">
+                        <span class="material-icons-round">share</span>
+                    </button>
+                    <button class="header-btn theme-toggle" onclick="toggleTheme()" title="تغيير المظهر" aria-label="تغيير المظهر">
+                        <span class="material-icons-round icon-sun">light_mode</span>
+                        <span class="material-icons-round icon-moon">dark_mode</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content" id="pageContent">
+                <!-- Sections will be rendered here dynamically -->
+            </div>
+
+        </main>
+    </div>
+
+    <!-- ============ Image Viewer ============ -->
+    <div class="image-viewer" id="imageViewer" onclick="closeImageViewer()">
+        <img id="imageViewerImg" src="" alt="عرض الصورة">
+    </div>
+
+    <!-- ============ Edit Modal ============ -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <h3 id="editModalTitle">تحرير المحتوى</h3>
+            <textarea id="editModalTextarea"></textarea>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeEditModal()">إلغاء</button>
+                <button class="btn btn-primary" onclick="saveEdit()">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ Toast ============ -->
+    <div class="toast-container" id="toast"></div>
+
+    <!-- ============ Context Menu (global, positioned dynamically) ============ -->
+    <div class="context-menu" id="contextMenu"></div>
+
+    <script>
+        // ============ Application State ============
+        const APP_STATE = {
+            currentSection: 'home',
+            theme: localStorage.getItem('app-theme') || 'dark',
+            fontSize: localStorage.getItem('app-font-size') || 16,
+            editingCardId: null,
+            sectionsData: null, // Will be loaded from localStorage or defaults
+        };
+
+        // ============ Default Content Data ============
+        const DEFAULT_SECTIONS_DATA = {
+            home: {
+                title: 'الرئيسية',
+                icon: 'home',
+                content: `
+                    <div class="section-card" data-card-id="home-welcome">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">menu_book</span>
+                                سيرته العطرة
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'home-welcome')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p>الشيخ الهادي بن أحمد أبوصبيع الخويلدي رحمه الله، كان من كبار علماء زلطن، ومعلمًا للقرآن والعلوم الشرعية.</p>
+                        <p>أصيب بالعمى منذ صغره، لكن ذلك لم يثنه عن طلب العلم، فختم القرآن حفظاً وتلاوة.</p>
+                        <p>لم يقتصر علمه على مدينته زلطن، بل كان قاضيًا ومفتيًا لكل المنطقة الغربية بالكامل.</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="audioBtn" onclick="toggleAudio()">
+                                <span class="material-icons-round" id="audioIcon">graphic_eq</span>
+                                <span id="audioLabel">استمع للسيرة</span>
+                            </button>
+                            <button class="btn btn-outline" onclick="showRandomFact()">
+                                <span class="material-icons-round">lightbulb</span>
+                                فائدة عشوائية
+                            </button>
+                        </div>
+                    </div>
+                `
+            },
+            biography: {
+                title: 'السيرة العطرة',
+                icon: 'menu_book',
+                content: `
+                    <div class="section-card" data-card-id="bio-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">menu_book</span>
+                                السيرة العطرة
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'bio-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p>الشيخ الهادي بن أحمد أبوصبيع الخويلدي رحمه الله، كان من كبار علماء زلطن، ومعلمًا للقرآن والعلوم الشرعية.</p>
+                        <p>أصيب بالعمى منذ صغره، لكن ذلك لم يثنه عن طلب العلم، فختم القرآن حفظاً وتلاوة.</p>
+                        <p>لم يقتصر علمه على مدينته زلطن، بل كان قاضيًا ومفتيًا لكل المنطقة الغربية بالكامل.</p>
+                    </div>
+                `
+            },
+            certificate: {
+                title: 'الشهادة التاريخية',
+                icon: 'history_edu',
+                content: `
+                    <div class="section-card" data-card-id="cert-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">history_edu</span>
+                                قصة الشهادة التاريخية
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'cert-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p>أول شهادة علمية للتدريس في العلوم الشرعية تمنح لشيخ من زلطن من حوالي 80 سنة، أي سنة 1939م.</p>
+                        <p>نالها الشيخ الهادي أبوصبيع رحمه الله، بعد أن لازم قراءة العلم الشريف بمركز طرابلس الغرب لمدة تقرب من عشر سنوات.</p>
+                        <p>وقد ثبتت له أهليته في العلوم الشرعية مع حسن السيرة والسلوك والفطانة والعفة في الديانة.</p>
+                    </div>
+                `
+            },
+            positions: {
+                title: 'المواقف والعقيدة',
+                icon: 'record_voice_over',
+                content: `
+                    <div class="section-card" data-card-id="pos-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">record_voice_over</span>
+                                مواقفه ونصرته للعقيدة
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'pos-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <div class="work-item" style="border-right-color: #e74c3c;">
+                            <h3>🛡️ قصة إنكاره الذبح لغير الله</h3>
+                            <p style="line-height: 1.8; text-align: justify;">
+                                كان الشيخ الهادي -رحمه الله- يبصر بقلبه ما قد يخفى على ذوي الأبصار، فكان غيوراً على دين الله وعلى نقاء عقيدة التوحيد.
+                                وفي زمن انتشرت فيه بعض العادات الجاهلية نتيجة الجهل، رأى بعض الناس يقدمون القرابين ويذبحون لغير الله عند الأضرحة والمزارات طلباً للبركة والشفاعة من دون الله.
+                                قام الشيخ كالجبل الأشم، وصدع بكلمة الحق في دروسه وخطبه، محذراً الناس من خطورة هذا الفعل الذي يخدش أصل التوحيد، ومذكراً إياهم دائماً بقول الله تعالى: <b style="color:var(--accent-color);">{قُلْ إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ}</b>.
+                                لكن العوام في بداية الأمر أبت واستكبرت، وتمسكت بما ألفوا عليه آباءهم من عادات بالية، ورفضوا الاستماع لنصحه بل واجهوه بالصدود. ورغم هذا الجفاء، لم ييأس الشيخ ولم يتراجع، بل قابل جفاءهم بالصبر وطول النفس والموعظة الحسنة، وظل يغرس نور السنة والتوحيد في القلوب، حتى بدأت تلك الظلمات تتلاشى بفضل الله ثم بفضل ثباته، تاركاً للأجيال درساً عظيماً في نصرة العقيدة الصحيحة.
+                            </p>
+                        </div>
+                    </div>
+                `
+            },
+            prayers: {
+                title: 'أدعية مأثورة',
+                icon: 'volunteer_activism',
+                content: `
+                    <div class="section-card" data-card-id="prayers-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">volunteer_activism</span>
+                                أدعية مأثورة للشيخ
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'prayers-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p style="opacity: 0.8; margin-bottom: 16px;">ادعُ للشيخ الهادي أبوصبيع عند دخولك، لعلها تكون ساعة استجابة:</p>
+                        <div class="work-item">
+                            <p style="font-size: 1.05rem; text-align: center; font-family: 'Amiri', serif;">"اللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ، وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرَمْ نُزُلَهُ، وَوَسِّعْ مُدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الْخَطَايَا كَمَا نَقَّيْتَ الثَّوْبَ الأَبْيَضَ مِنَ الدَّنَسِ."</p>
+                        </div>
+                        <div class="work-item">
+                            <p style="font-size: 1.05rem; text-align: center; font-family: 'Amiri', serif;">"اللَّهُمَّ اجعل قبره روضة من رياض الجنة، ولا تجعله حفرة من حفر النار، وافسح له في قبره ونوّر له فيه."</p>
+                        </div>
+                        <div class="work-item">
+                            <p style="font-size: 1.05rem; text-align: center; font-family: 'Amiri', serif;">"اللَّهُمَّ إن كان محسناً فزد في إحسانه، وإن كان مسيئاً فتجاوز عن سيئاته، واجعل علمه وتعليمه صدقة جارية تنير له قبره إلى يوم يبعثون."</p>
+                        </div>
+                    </div>
+                `
+            },
+            works: {
+                title: 'الأعمال والآثار العلمية',
+                icon: 'library_books',
+                content: `
+                    <div class="section-card" data-card-id="works-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">library_books</span>
+                                أعماله وآثاره العلمية
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'works-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p style="margin-bottom: 16px; opacity: 0.7;">ليكتب الله له أجرها وصدقتها الجارية ما انتفع بها مسلم:</p>
+                        <div class="work-item">
+                            <h3>📖 تحفيظ القرآن الكريم وتدريسه</h3>
+                            <p>قام الشيخ بتربية أجيال على حفظ كتاب الله وتلاوته في مساجد زلطن رغم كف بصره.</p>
+                        </div>
+                        <div class="work-item">
+                            <h3>⚖️ مجالس القضاء والإفتاء الشرعي</h3>
+                            <p>تولى القضاء والفصل في النزاعات وإصدار الفتاوى الشرعية لكامل المنطقة الغربية بليبيا.</p>
+                        </div>
+                        <div class="work-item">
+                            <h3>🕌 الحلقات العلمية والدروس الدينية</h3>
+                            <p>تأسيس مجالس تعليم متون الفقه المالكي وأصول الدين للطلبة والراغبين في تعلم العلوم الشرعية.</p>
+                        </div>
+                        <p style="text-align: center; font-style: italic; font-size: 0.9rem; margin-top: 16px; color: var(--accent-color);">
+                            "رحمه الله وجعل ما قدّمه في ميزان حسناته"
+                        </p>
+                    </div>
+                `
+            },
+            quran: {
+                title: 'القرآن الكريم',
+                icon: 'play_circle_filled',
+                content: `
+                    <div class="section-card" data-card-id="quran-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">play_circle_filled</span>
+                                القرآن الكريم كاملاً
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'quran-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <div class="responsive-video">
+                            <iframe src="https://www.youtube.com/embed/videoseries?list=PLusDqli-BOarEgTRDzwXMgrh5JNqq8Kr8"
+                                title="قائمة تشغيل القرآن الكريم"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                `
+            },
+            gallery: {
+                title: 'المعرض',
+                icon: 'image',
+                content: `
+                    <div class="section-card" data-card-id="gallery-cert">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">image</span>
+                                صورة الشهادة التاريخية
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'gallery-cert')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <img src="image_0.png" class="certificate" alt="صورة ضوئية للشهادة التاريخية للشيخ الهادي أبوصبيع"
+                            style="width:100%; border-radius:10px; cursor:pointer; border:2px solid var(--border-color);"
+                            onerror="this.src='https://via.placeholder.com/400x300?text=' + encodeURIComponent('الصورة غير متوفرة')"
+                            onclick="openImageViewer(this.src)">
+                    </div>
+                    <div class="section-card" data-card-id="gallery-text">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">auto_stories</span>
+                                نص الشهادة
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'gallery-text')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p class="certificate-text">
+                            الشيخ الهادي بن احمد ابي صبيع الخويلدي .
+                            <br>الذي لازم قراءة العلم الشريف بمركز طرابلس الغرب لمدة تقرب من عشر سنوات قد ثبتت له اهليته في العلوم الشرعية مع حسن السيرة والسلوك والفطانة والعفة في الديانة .
+                            <br>بحيث صار أهلاً لتعليم العلوم الشرعية وإلقاء الدروس وترشيد الطلبة .
+                            <br>ولأجل ذلك أعطيت له هذه الشهادة فيما ذكر .
+                            <br>تحريراً في الخامس عشر من صفر . 1358 الموافق 5 أبريل 1939م .
+                            <br>قاضي قضاة طرابلس الغرب .
+                        </p>
+                    </div>
+                `
+            },
+            reviews: {
+                title: 'التقييمات',
+                icon: 'star_rate',
+                content: `
+                    <div class="section-card" data-card-id="reviews-detail">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">star_rate</span>
+                                تقييمات المستخدمين وتعليقاتهم
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'reviews-detail')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <p style="margin-bottom: 16px; opacity:0.8;">شارك برأيك عن التطبيق وعن سيرة الشيخ، واكتب تعليقاً وتقييماً ليكون أجراً لك وصدقة جارية.</p>
+                        <div id="reviewsList" style="max-height: 450px; overflow-y: auto; margin-bottom: 20px;">
+                            <div style="text-align: center; padding: 20px; color: var(--text-muted);">جاري تحميل التقييمات...</div>
+                        </div>
+                        <div class="rating-form">
+                            <h3 style="color: var(--accent-color); margin-top:0;">أضف تقييمك</h3>
+                            <input type="text" id="reviewerName" placeholder="الاسم (اختياري)" maxlength="30">
+                            <div class="star-rating" dir="ltr">
+                                <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 نجوم">★</label>
+                                <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 نجوم">★</label>
+                                <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 نجوم">★</label>
+                                <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 نجوم">★</label>
+                                <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="نجمة">★</label>
+                            </div>
+                            <textarea id="reviewComment" placeholder="اكتب تعليقك هنا... (مطلوب)" rows="3" required></textarea>
+                            <button class="btn-submit-review" onclick="submitReview()">📝 إرسال التقييم</button>
+                        </div>
+                        <p style="font-size:0.7rem; text-align:center; margin-top:10px; opacity:0.7;">تظهر التعليقات فور الموافقة (إشراف آلي) وسيطلع عليها الزوار.</p>
+                    </div>
+                `
+            },
+            settings: {
+                title: 'الإعدادات',
+                icon: 'settings',
+                content: `
+                    <div class="section-card" data-card-id="settings-appearance">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="material-icons-round">settings</span>
+                                إعدادات التطبيق
+                            </div>
+                            <button class="context-menu-btn" onclick="toggleContextMenu(event, 'settings-appearance')">
+                                <span class="material-icons-round">more_vert</span>
+                            </button>
+                        </div>
+                        <div class="settings-group">
+                            <label>مظهر التطبيق (الألوان)</label>
+                            <div class="theme-options">
+                                <button class="theme-option active" style="background:#1a1a2e; color:#d4af37;" onclick="setAccentTheme('gold', this)">الذهبي</button>
+                                <button class="theme-option" style="background:#0b1d12; color:#2ecc71;" onclick="setAccentTheme('green', this)">الإسلامي</button>
+                                <button class="theme-option" style="background:#f5f5f5; color:#333;" onclick="setAccentTheme('light', this)">الفاتح</button>
+                            </div>
+                        </div>
+                        <hr style="border:0; border-top: 1px solid var(--divider-color); margin: 20px 0;">
+                        <div class="settings-group">
+                            <label id="fontLabel">حجم الخط (${APP_STATE.fontSize}px)</label>
+                            <input type="range" min="14" max="24" value="${APP_STATE.fontSize}" class="font-slider" oninput="changeFontSize(this.value)">
+                        </div>
+                        <hr style="border:0; border-top: 1px solid var(--divider-color); margin: 20px 0;">
+                        <div class="settings-group">
+                            <label>مشاركة التطبيق</label>
+                            <button class="btn btn-outline" style="width: 100%; justify-content: center;" onclick="shareSite()">
+                                <span class="material-icons-round" style="color: var(--accent-color);">share</span>
+                                انسخ رابط التطبيق وشاركه للأجر
+                            </button>
+                        </div>
+                    </div>
+                    <div class="section-card" style="text-align: center;" data-card-id="settings-dev">
+                        <div class="card-header" style="justify-content: center;">
+                            <div class="card-title">
+                                <span class="material-icons-round">code</span>
+                                تطوير وبرمجة
+                            </div>
+                        </div>
+                        <p style="font-weight: 700; font-size: 1.1rem; margin-bottom: 4px;">معاذ ابوصبيع</p>
+                        <p style="font-size: 0.85rem; opacity: 0.7;">تم برمجة هذا العمل كصدقة جارية لروح الشيخ رحمه الله ونفعاً للمسلمين.</p>
+                    </div>
+                `
+            }
+        };
+
+        // ============ Initialization ============
+        function init() {
+            // Load saved data
+            loadSectionsData();
+
+            // Apply theme
+            applyTheme(APP_STATE.theme);
+
+            // Apply font size
+            applyFontSize(APP_STATE.fontSize);
+
+            // Navigate to initial section
+            const savedSection = localStorage.getItem('app-current-section') || 'home';
+            navigateTo(savedSection);
+
+            // Load reviews
+            loadReviews();
+
+            // Close context menu on outside click
+            document.addEventListener('click', (e) => {
+                const menu = document.getElementById('contextMenu');
+                if (!e.target.closest('.context-menu-btn') && !e.target.closest('.context-menu')) {
+                    menu.classList.remove('show');
+                }
+            });
+
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    document.getElementById('contextMenu').classList.remove('show');
+                    closeEditModal();
+                    closeImageViewer();
+                }
+            });
+
+            console.log('✅ تطبيق الشيخ الهادي أبوصبيع - تم التهيئة بنجاح');
+        }
+
+        // ============ Theme Management ============
+        function applyTheme(theme) {
+            APP_STATE.theme = theme;
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('app-theme', theme);
+        }
+
+        function toggleTheme() {
+            const newTheme = APP_STATE.theme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+            showToast(newTheme === 'dark' ? '🌙 الوضع الداكن مفعّل' : '☀️ الوضع الفاتح مفعّل');
+        }
+
+        function setAccentTheme(type, btn) {
+            // Update active button
+            document.querySelectorAll('.theme-option').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const root = document.documentElement;
+            if (type === 'gold') {
+                root.style.setProperty('--accent-color', '#d4af37');
+                root.style.setProperty('--accent-light', 'rgba(212, 175, 55, 0.12)');
+                root.style.setProperty('--accent-glow', 'rgba(212, 175, 55, 0.2)');
+            } else if (type === 'green') {
+                root.style.setProperty('--accent-color', '#2ecc71');
+                root.style.setProperty('--accent-light', 'rgba(46, 204, 113, 0.12)');
+                root.style.setProperty('--accent-glow', 'rgba(46, 204, 113, 0.2)');
+            } else if (type === 'light') {
+                root.style.setProperty('--accent-color', '#3498db');
+                root.style.setProperty('--accent-light', 'rgba(52, 152, 219, 0.12)');
+                root.style.setProperty('--accent-glow', 'rgba(52, 152, 219, 0.2)');
+            }
+            localStorage.setItem('app-accent-theme', type);
+            showToast('✅ تم تغيير المظهر');
+        }
+
+        // ============ Font Size ============ 
+        function applyFontSize(size) {
+            APP_STATE.fontSize = size;
+            document.documentElement.style.setProperty('--font-scale', size + 'px');
+            const label = document.getElementById('fontLabel');
+            if (label) label.textContent = `حجم الخط (${size}px)`;
+            localStorage.setItem('app-font-size', size);
+        }
+
+        function changeFontSize(value) {
+            applyFontSize(value);
+        }
+
+        // ============ Navigation ============
+        function navigateTo(sectionId) {
+            APP_STATE.currentSection = sectionId;
+            localStorage.setItem('app-current-section', sectionId);
+
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.section === sectionId) {
+                    item.classList.add('active');
+                }
+            });
+
+            // Render section
+            renderSection(sectionId);
+
+            // Close mobile sidebar
+            closeSidebar();
+
+            // Scroll to top
+            document.getElementById('pageContent').scrollTop = 0;
+        }
+
+        function renderSection(sectionId) {
+            const container = document.getElementById('pageContent');
+            const data = APP_STATE.sectionsData[sectionId];
+
+            if (!data) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <span class="material-icons-round">folder_off</span>
+                        <p>المحتوى غير متوفر</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = data.content;
+
+            // Re-initialize audio button state
+            updateAudioButtonState();
+        }
+
+        // ============ Sections Data Management ============
+        function loadSectionsData() {
+            const saved = localStorage.getItem('app-sections-data');
+            if (saved) {
+                try {
+                    APP_STATE.sectionsData = JSON.parse(saved);
+                } catch (e) {
+                    APP_STATE.sectionsData = { ...DEFAULT_SECTIONS_DATA };
+                }
+            } else {
+                APP_STATE.sectionsData = { ...DEFAULT_SECTIONS_DATA };
+            }
+        }
+
+        function saveSectionsData() {
+            localStorage.setItem('app-sections-data', JSON.stringify(APP_STATE.sectionsData));
+        }
+
+        function resetSectionsData() {
+            APP_STATE.sectionsData = { ...DEFAULT_SECTIONS_DATA };
+            saveSectionsData();
+            renderSection(APP_STATE.currentSection);
+            showToast('✅ تم استعادة المحتوى الافتراضي');
+        }
+
+        // ============ Context Menu ============
+        function toggleContextMenu(event, cardId) {
+            event.stopPropagation();
+            const menu = document.getElementById('contextMenu');
+            const btn = event.currentTarget;
+
+            // If already showing for this card, hide
+            if (menu.dataset.cardId === cardId && menu.classList.contains('show')) {
+                menu.classList.remove('show');
+                return;
+            }
+
+            menu.dataset.cardId = cardId;
+            menu.innerHTML = `
+                <button class="context-menu-item" onclick="editCardContent('${cardId}')">
+                    <span class="material-icons-round">edit</span> تحرير المحتوى
+                </button>
+                <button class="context-menu-item" onclick="duplicateCard('${cardId}')">
+                    <span class="material-icons-round">content_copy</span> نسخ البطاقة
+                </button>
+                <button class="context-menu-item" onclick="moveCardUp('${cardId}')">
+                    <span class="material-icons-round">arrow_upward</span> نقل للأعلى
+                </button>
+                <button class="context-menu-item" onclick="moveCardDown('${cardId}')">
+                    <span class="material-icons-round">arrow_downward</span> نقل للأسفل
+                </button>
+                <div class="context-menu-divider"></div>
+                <button class="context-menu-item" onclick="openCardSettings('${cardId}')">
+                    <span class="material-icons-round">tune</span> إعدادات البطاقة
+                </button>
+                <div class="context-menu-divider"></div>
+                <button class="context-menu-item danger" onclick="deleteCard('${cardId}')">
+                    <span class="material-icons-round">delete</span> حذف البطاقة
+                </button>
+            `;
+
+            // Position menu
+            const rect = btn.getBoundingClientRect();
+            menu.style.top = (rect.bottom + 4) + 'px';
+            menu.style.left = (rect.left - 180) + 'px';
+
+            // Ensure menu stays in viewport
+            const menuRect = menu.getBoundingClientRect();
+            if (menuRect.left < 0) menu.style.left = '10px';
+            if (menuRect.bottom > window.innerHeight) {
+                menu.style.top = (rect.top - menuRect.height - 4) + 'px';
+            }
+
+            menu.classList.add('show');
+        }
+
+        // ============ Card CRUD Operations ============
+        function editCardContent(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+            APP_STATE.editingCardId = cardId;
+
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card) return;
+
+            // Get card content (exclude header)
+            const cardContent = card.cloneNode(true);
+            // Remove context menu button from clone
+            const menuBtn = cardContent.querySelector('.context-menu-btn');
+            if (menuBtn) menuBtn.remove();
+
+            document.getElementById('editModalTitle').textContent = 'تحرير محتوى البطاقة';
+            document.getElementById('editModalTextarea').value = cardContent.innerHTML;
+            document.getElementById('editModal').classList.add('show');
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('show');
+            APP_STATE.editingCardId = null;
+        }
+
+        function saveEdit() {
+            const cardId = APP_STATE.editingCardId;
+            const newContent = document.getElementById('editModalTextarea').value;
+
+            if (!cardId) return;
+
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card) return;
+
+            // Preserve the header (title + context menu button)
+            const header = card.querySelector('.card-header');
+            card.innerHTML = '';
+            if (header) card.appendChild(header);
+            // Append new content
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = newContent;
+            while (tempDiv.firstChild) {
+                card.appendChild(tempDiv.firstChild);
+            }
+
+            // Save to state
+            saveCurrentSectionState();
+            closeEditModal();
+            showToast('✅ تم حفظ التعديلات');
+        }
+
+        function duplicateCard(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card) return;
+
+            const clone = card.cloneNode(true);
+            const newId = cardId + '-copy-' + Date.now();
+            clone.dataset.cardId = newId;
+            card.parentNode.insertBefore(clone, card.nextSibling);
+
+            saveCurrentSectionState();
+            showToast('✅ تم نسخ البطاقة');
+        }
+
+        function moveCardUp(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card || !card.previousElementSibling) return;
+
+            card.parentNode.insertBefore(card, card.previousElementSibling);
+            saveCurrentSectionState();
+            showToast('✅ تم نقل البطاقة للأعلى');
+        }
+
+        function moveCardDown(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card || !card.nextElementSibling) return;
+
+            card.parentNode.insertBefore(card.nextElementSibling, card);
+            saveCurrentSectionState();
+            showToast('✅ تم نقل البطاقة للأسفل');
+        }
+
+        function deleteCard(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+
+            if (!confirm('هل أنت متأكد من حذف هذه البطاقة؟ يمكنك استعادة المحتوى الافتراضي من الإعدادات.')) return;
+
+            const card = document.querySelector(`[data-card-id="${cardId}"]`);
+            if (!card) return;
+
+            card.style.transition = 'all 0.3s ease';
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                card.remove();
+                saveCurrentSectionState();
+                showToast('🗑️ تم حذف البطاقة');
+            }, 300);
+        }
+
+        function openCardSettings(cardId) {
+            document.getElementById('contextMenu').classList.remove('show');
+            showToast('⚙️ إعدادات البطاقة: ' + cardId);
+        }
+
+        function saveCurrentSectionState() {
+            const container = document.getElementById('pageContent');
+            const sectionId = APP_STATE.currentSection;
+            if (APP_STATE.sectionsData[sectionId]) {
+                APP_STATE.sectionsData[sectionId].content = container.innerHTML;
+                saveSectionsData();
+            }
+        }
+
+        // ============ Search ============
+        function handleSearch(query) {
+            const cards = document.querySelectorAll('.section-card');
+            const lowerQuery = query.toLowerCase().trim();
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                if (!lowerQuery || text.includes(lowerQuery)) {
+                    card.style.display = '';
+                    card.style.animation = 'fadeSlideIn 0.3s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // ============ Audio Player ============
+        let isPlaying = false;
+
+        function toggleAudio() {
+            isPlaying = !isPlaying;
+            updateAudioButtonState();
+            if (isPlaying) {
+                showToast('🔊 جاري تشغيل السيرة الصوتية...');
+            } else {
+                showToast('⏸️ تم إيقاف التشغيل');
+            }
+        }
+
+        function updateAudioButtonState() {
+            const btn = document.getElementById('audioBtn');
+            const icon = document.getElementById('audioIcon');
+            const label = document.getElementById('audioLabel');
+            if (!btn || !icon || !label) return;
+
+            if (isPlaying) {
+                btn.classList.add('playing');
+                icon.textContent = 'stop';
+                label.textContent = 'إيقاف';
+            } else {
+                btn.classList.remove('playing');
+                icon.textContent = 'graphic_eq';
+                label.textContent = 'استمع للسيرة';
+            }
+        }
+
+        // ============ Random Facts ============
+        const RANDOM_FACTS = [
+            'كان الشيخ الهادي -رحمه الله- كفيف البصر لكنه حفظ القرآن كاملاً.',
+            'حصل الشيخ على أول شهادة علمية للتدريس في العلوم الشرعية عام 1939م.',
+            'كان الشيخ قاضيًا ومفتيًا لكامل المنطقة الغربية بليبيا.',
+            'تصدى الشيخ للعادات الجاهلية ونصر عقيدة التوحيد بكل ثبات.',
+            'أسس الشيخ مجالس تعليم متون الفقه المالكي وأصول الدين.',
+            'استمر الشيخ في طلب العلم رغم إصابته بالعمى منذ صغره.',
+            'كان الشيخ يختم القرآن ويُعلّمه لأجيال متعاقبة في مساجد زلطن.',
+        ];
+
+        function showRandomFact() {
+            const fact = RANDOM_FACTS[Math.floor(Math.random() * RANDOM_FACTS.length)];
+            showToast('💡 ' + fact);
+        }
+
+        // ============ Image Viewer ============
+        function openImageViewer(src) {
+            const viewer = document.getElementById('imageViewer');
+            const img = document.getElementById('imageViewerImg');
+            img.src = src;
+            viewer.classList.add('show');
+        }
+
+        function closeImageViewer() {
+            document.getElementById('imageViewer').classList.remove('show');
+        }
+
+        // ============ Reviews ============
+        function loadReviews() {
+            const reviewsList = document.getElementById('reviewsList');
+            if (!reviewsList) return;
+
+            const saved = localStorage.getItem('app-reviews');
+            const reviews = saved ? JSON.parse(saved) : [];
+
+            if (reviews.length === 0) {
+                reviewsList.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: var(--text-muted);">
+                        <span class="material-icons-round" style="font-size:2rem; opacity:0.3;">rate_review</span>
+                        <p>لا توجد تقييمات بعد. كن أول من يقيّم!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            reviewsList.innerHTML = reviews.map(r => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="reviewer-name">${escapeHtml(r.name || 'زائر')}</span>
+                        <span class="review-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</span>
+                    </div>
+                    <p class="review-comment">${escapeHtml(r.comment)}</p>
+                    <div class="review-date">${r.date || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        function submitReview() {
+            const name = document.getElementById('reviewerName')?.value.trim() || 'زائر';
+            const comment = document.getElementById('reviewComment')?.value.trim();
+            const ratingInput = document.querySelector('input[name="rating"]:checked');
+            const rating = ratingInput ? parseInt(ratingInput.value) : 0;
+
+            if (!comment) {
+                showToast('⚠️ الرجاء كتابة تعليق');
+                return;
+            }
+
+            if (rating === 0) {
+                showToast('⚠️ الرجاء اختيار تقييم بالنجوم');
+                return;
+            }
+
+            const saved = localStorage.getItem('app-reviews');
+            const reviews = saved ? JSON.parse(saved) : [];
+
+            reviews.unshift({
+                name: name,
+                comment: comment,
+                rating: rating,
+                date: new Date().toLocaleDateString('ar-SA')
+            });
+
+            // Keep max 50 reviews
+            const trimmed = reviews.slice(0, 50);
+            localStorage.setItem('app-reviews', JSON.stringify(trimmed));
+
+            // Clear form
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewComment').value = '';
+            const checkedRating = document.querySelector('input[name="rating"]:checked');
+            if (checkedRating) checkedRating.checked = false;
+
+            loadReviews();
+            showToast('✅ تم إرسال تقييمك! شكراً لمشاركتك.');
+        }
+
+        // ============ Share ============
+        function shareSite() {
+            const url = window.location.href;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast('📋 تم نسخ الرابط! شاركه للأجر.');
+                });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = url;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('📋 تم نسخ الرابط! شاركه للأجر.');
+            }
+        }
+
+        // ============ Sidebar (Mobile) ============
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('show');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.remove('open');
+            overlay.classList.remove('show');
+        }
+
+        // ============ Toast Notifications ============
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ============ Utilities ============
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        // ============ Initialize App ============
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+</body>
+</html>
